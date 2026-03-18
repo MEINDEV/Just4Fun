@@ -1,10 +1,16 @@
-const { app } = require('@azure/functions');
-const nodemailer = require('nodemailer');
+const { EmailClient } = require("@azure/communication-email");
+const { DefaultAzureCredential } = require("@azure/identity");
+const { app } = require('@azure/functions'); 
+
+const endpoint = "https://meind-smtp-server.india.communication.azure.com";
+const credential = new DefaultAzureCredential();
+const client = new EmailClient(endpoint, credential);
 
 app.http('handleEmail', {
     methods: ['POST'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
+
         context.log(`Processing email request for "${request.url}"`);
 
         // 1. Get the recipient from the JSON body
@@ -13,37 +19,19 @@ app.http('handleEmail', {
         const recipientEmail = data.email;
         const recipientName = data.name || 'Customer';
 
+        const message = {
+            senderAddress: "AMT_noreply@meindev.com",
+            content: { subject: "Test Email", plainText: "Hello world!" },
+            recipients: { to: [{ address: recipientEmail }] },
+        };
+
         if (!recipientEmail) {
             return { status: 400, body: "Missing recipient email in request body." };
         }
 
-        // 2. Configure the Transporter using Environment Variables
-        const transporter = nodemailer.createTransport({
-            host: "smtp.azurecomm.net", // Or your SMTP provider
-            port: 587,
-            secure: false, // true for 465, false for other ports
-            auth: {
-                user: "PQ0CxptgU6NH3uvvzZrR",
-                pass: process.env.AZURE_CLIENT_SECRET,
-            },
-        });
+        const poller = await client.beginSend(message);
+        const result = await poller.pollUntilDone();
+        console.log("Sent successfully:", result);
 
-        try {
-            // 3. Send the email
-            const info = await transporter.sendMail({
-                from: `"My Azure App" <${"AMT_noreply@meindev.com"}>`,
-                to: recipientEmail,
-                subject: "Hello from Azure Functions!",
-                text: `Hello ${recipientName}, this is a test email sent via your Azure API!`,
-                html: `<b>Hello ${recipientName}</b>, this is a test email sent via your Azure API!`,
-            });
-
-            context.log("Message sent: %s", info.messageId);
-            return { status: 200, body: JSON.stringify({ message: "Email sent successfully!" }) };
-            
-        } catch (error) {
-            context.log.error("Email error:", error);
-            return { status: 500, body: "Failed to send email." };
-        }
     }
 });
