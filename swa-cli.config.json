@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "just4-fun": {
+      "appLocation": ".",
+      "apiLocation": "api",
+      "outputLocation": "dist",
+      "appBuildCommand": "npm run build",
+      "run": "npm run dev",
+      "appDevserverUrl": "http://localhost:5173",
+      "appName": "just4-fun-3",
+      "resourceGroup": "just4-fun-rg1",
+      "apiLanguage": "node",
+      "apiVersion": "18"
+    }
+  }
+}

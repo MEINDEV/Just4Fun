@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import EmailForm from "./component/EmailForm";
 
 // ─── Shared Utilities ──────────────────────────────────────────────────────────
 const useInView = (threshold = 0.12) => {
@@ -294,6 +295,7 @@ const PRODUCTS = [
     ],
   },
 ];
+
 
 // ─── Shared UI Components ──────────────────────────────────────────────────────
 const GlowOrb = ({ style }) => (
@@ -640,6 +642,10 @@ const EntraHome = ({ onNavigate }) => {
             </FadeIn>
           ))}
         </div>
+      </section>
+
+      <section style={{ padding: "90px 3rem", maxWidth: 1200, margin: "0 auto" }}>
+          <EmailForm />
       </section>
 
       {/* Footer */}
