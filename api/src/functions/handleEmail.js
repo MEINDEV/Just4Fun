@@ -2,7 +2,7 @@ const { EmailClient } = require("@azure/communication-email");
 const { DefaultAzureCredential } = require("@azure/identity");
 const { app } = require('@azure/functions'); 
 
-const endpoint = "https://meind-smtp-server.india.communication.azure.com";
+const endpoint = "https://e404.india.communication.azure.com";
 const credential = new DefaultAzureCredential();
 const client = new EmailClient(endpoint, credential);
 
@@ -20,7 +20,7 @@ app.http('handleEmail', {
         const recipientName = data.name || 'Customer';
 
         const message = {
-            senderAddress: "AMT_noreply@meindev.com",
+            senderAddress: "AMTAlerts@meindev.com",
             content: { subject: "Test Email", plainText: "Hello world!" },
             recipients: { to: [{ address: recipientEmail }] },
         };

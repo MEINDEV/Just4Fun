@@ -8,10 +8,10 @@
       "appBuildCommand": "npm run build",
       "run": "npm run dev",
       "appDevserverUrl": "http://localhost:5173",
-      "appName": "just4-fun-3",
+      "appName": "just4-fun-4",
       "resourceGroup": "just4-fun-rg1",
       "apiLanguage": "node",
-      "apiVersion": "18"
+      "apiVersion": "20"
     }
   }
 }
