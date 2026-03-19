@@ -525,6 +525,10 @@ const EntraHome = ({ onNavigate }) => {
         transform: `translate(${mouse.x - 175}px, ${mouse.y - 175}px)`, transition: "transform 0.12s ease"
       }} />
 
+      <section style={{ padding: "90px 3rem", maxWidth: 1200, margin: "0 auto" }}>
+          <EmailForm />
+      </section>
+
       {/* HERO */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 3rem" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% -10%, #1e3a8a 0%, #0f172a 60%, #020617 100%)" }} />
@@ -579,6 +583,8 @@ const EntraHome = ({ onNavigate }) => {
           </div>
         </div>
       </section>
+
+      
 
       {/* Stats */}
       <section style={{ padding: "70px 3rem", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
@@ -644,9 +650,7 @@ const EntraHome = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section style={{ padding: "90px 3rem", maxWidth: 1200, margin: "0 auto" }}>
-          <EmailForm />
-      </section>
+      
 
       {/* Footer */}
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "36px 3rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>

@@ -239,7 +239,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f5f6fa",
+    backgroundColor: "transparent",
     padding: "32px 16px",
     fontFamily: "'Segoe UI', system-ui, sans-serif",
   },
