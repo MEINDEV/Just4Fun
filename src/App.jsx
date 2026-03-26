@@ -554,7 +554,7 @@ const EntraHome = ({ onNavigate }) => {
             marginBottom: 36, animation: "float 3s ease-in-out infinite alternate"
           }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#34d399", boxShadow: "0 0 8px #34d399" }} />
-            <span style={{ color: "#93c5fd", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em" }}>Now available — Microsoft Entra Suite</span>
+            <span style={{ color: "#93c5fd", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em" }}>Now available — Microsoft Entra Suite 1</span>
           </div>
 
           <h1 style={{
